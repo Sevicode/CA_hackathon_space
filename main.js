@@ -23,4 +23,5 @@ function getPlanetImg(){
 }
 
 
+
 sat_btn.addEventListener('click', getPlanetImg)

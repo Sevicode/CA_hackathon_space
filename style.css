@@ -1,10 +1,10 @@
 
-body {
+/* body {
   
   padding-top: 5em;
   display: flex;
   justify-content: center;
-}
+} */
 
 /* DEMO-SPECIFIC STYLES */
 .typewriter h3 {
@@ -30,4 +30,10 @@ body {
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: orange }
+}
+
+
+/* styling the Sturn btn */
+#saturn-buttun {
+    margin: 10 auto 10 auto;
 }
