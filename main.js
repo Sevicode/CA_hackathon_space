@@ -2,6 +2,30 @@ let sat_btn = document.getElementById("saturn_btn")
 let query_form = document.getElementById("query_form")
 let planet_card = document.getElementById("planet_card")
 
+////Api to get the Image of the day
+const imageOfTheDay = document.querySelector(".daily-image");
+const apiPicOfTheDay = axios.get("https://api.nasa.gov/planetary/apod?", {
+    params: {
+        api_key: "ngHRTZ4OcS3inyyY02Q1Gl6fbRpQ9OnBRJeEqhBJ",
+    },
+});
+
+const getImageOfTheDay = () => {
+    apiPicOfTheDay
+        .then((response) => {
+            imageOfTheDay.insertAdjacentHTML(
+                "beforeend",
+                `<img src=${response.data.hdurl}>`
+            );
+            pictureName.insertAdjacentHTML("beforeend", `${response.data.title}`);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
+
+getImageOfTheDay();
+
 function getPlanetImg(){
     planet = 'saturn'
     topResults = {}
