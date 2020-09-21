@@ -1,7 +1,6 @@
 let sat_btn = document.getElementById("saturn_btn")
 let query_form = document.getElementById("query_form")
 let planet_card = document.getElementById("planet_card")
-
 ////Api to get the Image of the day
 const imageOfTheDay = document.querySelector(".daily-image");
 const apiPicOfTheDay = axios.get("https://api.nasa.gov/planetary/apod?", {
