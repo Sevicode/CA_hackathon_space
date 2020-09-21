@@ -58,5 +58,13 @@ function getPlanetInfo(event){
 
 }
 
+function getImgOfDay(){
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`)
+    .then(res => res.json())
+    .then(data => {
+        return data["url"]
+    })
+}
+
 sat_btn.addEventListener('click', getPlanetImg)
 query_form.addEventListener('submit', getPlanetInfo)
