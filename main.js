@@ -1,5 +1,4 @@
 let sat_btn = document.getElementById("saturn_btn")
-let info_btn = document.getElementById("info_btn")
 let query_form = document.getElementById("query_form")
 let planet_card = document.getElementById("planet_card")
 
@@ -59,7 +58,5 @@ function getPlanetInfo(event){
 
 }
 
-
 sat_btn.addEventListener('click', getPlanetImg)
-info_btn.addEventListener('click', getPlanetInfo)
 query_form.addEventListener('submit', getPlanetInfo)

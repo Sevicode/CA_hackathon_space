@@ -3,17 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.js">
+    <title>Coder Academy - Hackathon</title>
 </head>
-<body>
-    <button id="saturn_btn">Saturn</button>
-    <button id="info_btn">Info</button>
+
+<body class="container d-flex flex-column justify-content-center">
+    <div class="typewriter text-center">
+        <h3>Want to learn more about space?</h3>
+    </div>
+
+    <div class="saturn-button">
+        <button id="saturn_btn" class="btn btn-dark">Saturn</button>
+    </div>
+
     <form id="query_form"> 
         <input type="text" id="planet" name="planet">
         <input type="submit">
     </form>
+    
     <div id="planet_card"></div>
-
+    
     <script src="main.js"></script>
+
 </body>
+
 </html>
