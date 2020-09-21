@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="main.js">
     <title>Coder Academy - Hackathon</title>
 </head>
 
@@ -14,12 +13,16 @@
         <h3>Want to learn more about space?</h3>
     </div>
 
-
-
-
     <div class="saturn-button">
         <button id="saturn_btn" class="btn btn-dark text-center">Saturn</button>
     </div>
+
+    <form id="query_form"> 
+        <input type="text" id="planet" name="planet">
+        <input type="submit">
+    </form>
+    
+    <div id="planet_card"></div>
     
     <script src="main.js"></script>
 
