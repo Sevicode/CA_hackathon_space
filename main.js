@@ -17,7 +17,8 @@ const getImageOfTheDay = () => {
                 "beforeend",
                 `<img src=${response.data.hdurl}>`
             );
-            pictureName.insertAdjacentHTML("beforeend", `${response.data.title}`);
+            console.log(response)
+            // pictureName.insertAdjacentHTML("beforeend", `${response.data.title}`);
         })
         .catch((err) => {
             console.log(err);
@@ -82,5 +83,5 @@ function getPlanetInfo(event){
 
 }
 
-sat_btn.addEventListener('click', getPlanetImg)
+// sat_btn.addEventListener('click', getPlanetImg)
 query_form.addEventListener('submit', getPlanetInfo)
