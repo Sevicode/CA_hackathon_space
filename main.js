@@ -43,10 +43,10 @@ function getPlanetImg(planet){
           for (i = 1; i < 5; i++) {
             planetImages_desc = topResults[i]["desc"];
             // console.log(planetImages_desc)
-            img_box = document.getElementById("cars_img_${}");
-            console.log("img_box")
-            console.log(i)
-            console.log(img_box)
+            img_box = document.getElementById(`cars_img_${i}`);
+            // console.log("img_box")
+            // console.log(i)
+            // console.log(img_box)
             img_box.src = topResults[i]["thumb_img"]
           }
         }
