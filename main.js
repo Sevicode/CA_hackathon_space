@@ -1,6 +1,7 @@
 let sat_btn = document.getElementById("saturn_btn")
 let query_form = document.getElementById("query_form")
 let planet_card = document.getElementById("planet_card")
+
 ////Api to get the Image of the day
 const imageOfTheDay = document.querySelector(".daily-image");
 const apiPicOfTheDay = axios.get("https://api.nasa.gov/planetary/apod?", {
@@ -32,20 +33,31 @@ function getPlanetImg(planet){
     // planet = 'saturn'
     topResults = {}
     fetch(`https://images-api.nasa.gov/search?q=${planet}&media_type=image`)
-    .then(res => res.json())
-    .then( data => {
-        // console.log(data)
-        for (let i = 0; i < 10; i++) {
-            topResults[i] = {}
-            topResults[i]["desc"] = (data["collection"]["items"][i]["data"][0]["description"])
-            topResults[i]["thumb_img"] = data["collection"]["items"][i]["links"][0]["href"]
-            topResults[i]["href"] = data["collection"]["items"][i]["href"]
+      .then((res) => res.json())
+      .then(
+        (data) => {
+          // console.log(data)
+          for (let i = 0; i < 5; i++) {
+            topResults[i] = {};
+            topResults[i]["desc"] =
+              data["collection"]["items"][i]["data"][0]["description"];
+            topResults[i]["thumb_img"] =
+              data["collection"]["items"][i]["links"][0]["href"];
+            topResults[i]["href"] = data["collection"]["items"][i]["href"];
             // topResults[i]["desc"] = data["collection"]["items"][i]["data"][0]["description"]
+          }
+          console.log(topResults);
+          for (i = 1; i < 5; i++) {
+            planetImages_desc = topResults[i]["desc"];
+            img_box = document.getElementByID("cars_img_1");
+            console.log("img_box")
+            console.log(img_box)
+            // img_box.src = topResults[i]["thumb_img"]
+          }
         }
-        console.log(topResults)
-        }
-    )
-    .catch(err => alert(err))
+       
+      )
+      .catch((err) => alert(err));
 
     return topResults
 }
@@ -82,15 +94,11 @@ function getPlanetInfo(event){
 
     planetImages = getPlanetImg(planet);                //get the images and save in to object
 
-    //planetImages[i]["desc"]
-
-    //planetImages[i]["thumb_img"]
 
     //have for loop go through planetImages and assign to carosel images
     
-    //for(i=0;i<planet.length;i++)
-    //img_box = document.getElementByID("cars_img_${i}")
-    //img_box.src = planetImages[i]["thumb_img"]
+    
+   
 
 
 }
