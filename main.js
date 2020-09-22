@@ -16,12 +16,6 @@ const getImageOfTheDay = () => {
     apiPicOfTheDay
         .then((response) => {
             imageOfTheDay.style["background-image"] = `url("${response.data.url}")`
-            // imageOfTheDay.insertAdjacentHTML(
-            //     "beforeend",
-            //     `<img src=${response.data.hdurl}>`
-            // );
-            console.log(response)
-            // pictureName.insertAdjacentHTML("beforeend", `${response.data.title}`);
         })
         .catch((err) => {
             console.log(err);
@@ -78,6 +72,11 @@ function getPlanetImg(planet){
 function getPlanetInfo(event){
     event.preventDefault()
     planet = query_form.planet.value
+
+    while (planet_card.hasChildNodes()) {  
+        planet_card.removeChild(planet_card.firstChild);
+    } 
+    
     planetUl = document.createElement('ul')
     planet_card.appendChild(planetUl)
     // planet = 'mars'                     //default mars
