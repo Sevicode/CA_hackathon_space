@@ -46,7 +46,7 @@ function getPlanetImg(planet){
             img_box = document.getElementById(`cars_img_${i}`);
             // console.log("img_box")
             // console.log(i)
-            // console.log(img_box)
+            console.log(img_box)
             img_box.src = topResults[i]["thumb_img"]
           }
         }
