@@ -82,9 +82,15 @@ function getPlanetInfo(event){
 
     planetImages = getPlanetImg(planet);                //get the images and save in to object
 
-    //planetImages["desc"]
+    //planetImages[i]["desc"]
 
-    //planetImages["thumb_img"]
+    //planetImages[i]["thumb_img"]
+
+    //have for loop go through planetImages and assign to carosel images
+    
+    //for(i=0;i<planet.length;i++)
+    //img_box = document.getElementByID("cars_img_${i}")
+    //img_box.src = planetImages[i]["thumb_img"]
 
 
 }
