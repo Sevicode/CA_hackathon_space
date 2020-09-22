@@ -3,7 +3,7 @@
 **Team Members:**
 
 * [Chris White](https://github.com/ChrisWhite12)
-* [Sevda Amini-uhde](https://github.com/Sevicode)
+* [Sevda Amini-Uhde](https://github.com/Sevicode)
 
 **Link to the application:** [Space Data](https://chriswhite12.github.io/CA_hackathon_space/)
 
