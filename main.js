@@ -1,12 +1,14 @@
 let sat_btn = document.getElementById("saturn_btn")
 let query_form = document.getElementById("query_form")
 let planet_card = document.getElementById("planet_card")
+let main_planet_img = document.getElementById("main_planet_img")
+
 ////Api to get the Image of the day
 const imageOfTheDay = document.querySelector(".daily-image");
 const apiPicOfTheDay = axios.get("https://api.nasa.gov/planetary/apod?", {
     params: {
         api_key: "ngHRTZ4OcS3inyyY02Q1Gl6fbRpQ9OnBRJeEqhBJ",
-        date: "2010-01-01"
+        date: "2010-01-08"
     },
 });
 
@@ -18,7 +20,7 @@ const getImageOfTheDay = () => {
             //     "beforeend",
             //     `<img src=${response.data.hdurl}>`
             // );
-            console.log(response)
+            // console.log(response)
             // pictureName.insertAdjacentHTML("beforeend", `${response.data.title}`);
         })
         .catch((err) => {
@@ -31,7 +33,7 @@ getImageOfTheDay();
 function getPlanetImg(planet){
     // planet = 'saturn'
     topResults = {}
-    fetch(`https://images-api.nasa.gov/search?q=${planet}&media_type=image`)
+    fetch(`https://images-api.nasa.gov/search?q=${planet}%20planet&media_type=image`)
     .then(res => res.json())
     .then( data => {
         // console.log(data)
@@ -42,12 +44,13 @@ function getPlanetImg(planet){
             topResults[i]["href"] = data["collection"]["items"][i]["href"]
             // topResults[i]["desc"] = data["collection"]["items"][i]["data"][0]["description"]
         }
+        console.log(`top results`)
         console.log(topResults)
+
+        main_planet_img.src = topResults[0]["thumb_img"]
         }
     )
     .catch(err => alert(err))
-
-    return topResults
 }
 
 // function getWikiInfo(){
@@ -65,6 +68,10 @@ function getPlanetImg(planet){
 function getPlanetInfo(event){
     event.preventDefault()
     planet = query_form.planet.value
+
+    while (planet_card.hasChildNodes()) {  
+        planet_card.removeChild(planet_card.firstChild);
+    } 
     planetUl = document.createElement('ul')
     planet_card.appendChild(planetUl)
     // planet = 'mars'                     //default mars
@@ -77,11 +84,14 @@ function getPlanetInfo(event){
     .then(data => {
         planetResult = data["bodies"][0]
         console.log(planetResult)
-        planetUl.innerHTML = `<li>Name: ${planetResult["englishName"]}</li><li> Radius: ${planetResult["meanRadius"]} km</li><li>Orbit Radius: ${planetResult["semimajorAxis"]} km</li><li> Gravity: ${planetResult["gravity"]} m/s^2</li>`
+        planetUl.innerHTML = `<li>Name: ${planetResult["englishName"]}</li><li> Radius: ${planetResult["meanRadius"]} km</li>
+        <li>Orbit Radius: ${planetResult["semimajorAxis"]} km</li><li> Gravity: ${planetResult["gravity"]} m/s^2</li>`
+
+        getPlanetImg(planet);                //get the images and save in to object
     })
 
-    planetImages = getPlanetImg(planet);                //get the images and save in to object
-
+    
+    // main_planet_img.img.src = planetImages[0]["thumb_img"]
     //planetImages[i]["desc"]
 
     //planetImages[i]["thumb_img"]
