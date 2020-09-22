@@ -95,5 +95,7 @@ function getPlanetInfo(event){
 
 }
 
+
 // sat_btn.addEventListener('click', getPlanetImg)
 query_form.addEventListener('submit', getPlanetInfo)
+
