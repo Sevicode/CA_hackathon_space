@@ -27,7 +27,7 @@ During a two-day Hackathon our team developed a small application so the users c
 
 **Tech Stacks We Used for Developing This Application:**
 
-* Vanilla JavaScript
+* Vanilla JavaScript (*We were not allowed to use any JavaScript libraries*)
 * HTML
 * CSS
 * Bootstrap 
