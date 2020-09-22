@@ -32,27 +32,27 @@ getImageOfTheDay();
 function getPlanetImg(planet){
     // planet = 'saturn'
     topResults = {}
-    fetch(`https://images-api.nasa.gov/search?q=${planet}&media_type=image`)
+    fetch(`https://images-api.nasa.gov/search?q=${planet}%20planet&media_type=image`)
       .then((res) => res.json())
       .then(
         (data) => {
           // console.log(data)
           for (let i = 0; i < 5; i++) {
             topResults[i] = {};
-            topResults[i]["desc"] =
-              data["collection"]["items"][i]["data"][0]["description"];
-            topResults[i]["thumb_img"] =
-              data["collection"]["items"][i]["links"][0]["href"];
+            topResults[i]["desc"] = data["collection"]["items"][i]["data"][0]["description"];
+            topResults[i]["thumb_img"] = data["collection"]["items"][i]["links"][0]["href"];
             topResults[i]["href"] = data["collection"]["items"][i]["href"];
             // topResults[i]["desc"] = data["collection"]["items"][i]["data"][0]["description"]
           }
           console.log(topResults);
           for (i = 1; i < 5; i++) {
             planetImages_desc = topResults[i]["desc"];
-            img_box = document.getElementByID("cars_img_1");
-            console.log("img_box")
-            console.log(img_box)
-            // img_box.src = topResults[i]["thumb_img"]
+            // console.log(planetImages_desc)
+            img_box = document.getElementById(`cars_img_${i}`);
+            // console.log("img_box")
+            // console.log(i)
+            // console.log(img_box)
+            img_box.src = topResults[i]["thumb_img"]
           }
         }
        
