@@ -6,16 +6,18 @@ const imageOfTheDay = document.querySelector(".daily-image");
 const apiPicOfTheDay = axios.get("https://api.nasa.gov/planetary/apod?", {
     params: {
         api_key: "ngHRTZ4OcS3inyyY02Q1Gl6fbRpQ9OnBRJeEqhBJ",
+        date: "2010-01-01"
     },
 });
 
 const getImageOfTheDay = () => {
     apiPicOfTheDay
         .then((response) => {
-            imageOfTheDay.insertAdjacentHTML(
-                "beforeend",
-                `<img src=${response.data.hdurl}>`
-            );
+            imageOfTheDay.style["background-image"] = `url("${response.data.url}")`
+            // imageOfTheDay.insertAdjacentHTML(
+            //     "beforeend",
+            //     `<img src=${response.data.hdurl}>`
+            // );
             console.log(response)
             // pictureName.insertAdjacentHTML("beforeend", `${response.data.title}`);
         })
@@ -26,8 +28,8 @@ const getImageOfTheDay = () => {
 
 getImageOfTheDay();
 
-function getPlanetImg(){
-    planet = 'saturn'
+function getPlanetImg(planet){
+    // planet = 'saturn'
     topResults = {}
     fetch(`https://images-api.nasa.gov/search?q=${planet}&media_type=image`)
     .then(res => res.json())
@@ -78,6 +80,11 @@ function getPlanetInfo(event){
         planetUl.innerHTML = `<li>Name: ${planetResult["englishName"]}</li><li> Radius: ${planetResult["meanRadius"]} km</li><li>Orbit Radius: ${planetResult["semimajorAxis"]} km</li><li> Gravity: ${planetResult["gravity"]} m/s^2</li>`
     })
 
+    planetImages = getPlanetImg(planet);                //get the images and save in to object
+
+    //planetImages["desc"]
+
+    //planetImages["thumb_img"]
 
 
 }
