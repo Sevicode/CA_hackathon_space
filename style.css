@@ -1,14 +1,12 @@
-
-/* body {
-  
-  padding-top: 5em;
-  display: flex;
-  justify-content: center;
-} */
+.daily-image {
+    /* z-index: -1; */
+    width: 100vw;
+    height: 100vh;
+}
 
 /* DEMO-SPECIFIC STYLES */
 .typewriter h3 {
-  color: black;
+  color:#fff;
   font-family: monospace;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: .15em solid orange; /* The typwriter cursor */
@@ -32,8 +30,29 @@
   50% { border-color: orange }
 }
 
+#planet_card{
+  height:300px;
+  width: 30vw;
+  border: 2px black solid;
+}
 
-/* styling the Sturn btn */
-#saturn-buttun {
-    margin: 10 auto 10 auto;
+.section_info{
+  display: flex;;
+  /* flex-direction: column */
+  /* justify-content: space-between;
+  align-items: center; */
+  height: 400px;
+  width: 90vw;
+  border: 2px blue solid;
+}
+
+#main_planet_img{
+  height:300px;
+  width: 30vw;
+  border: 2px black solid;
+}
+.photo_section{
+  height: 400px;
+  width: 90vw;
+  border: 2px green solid;
 }

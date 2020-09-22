@@ -1,9 +1,35 @@
 let sat_btn = document.getElementById("saturn_btn")
 let query_form = document.getElementById("query_form")
 let planet_card = document.getElementById("planet_card")
+////Api to get the Image of the day
+const imageOfTheDay = document.querySelector(".daily-image");
+const apiPicOfTheDay = axios.get("https://api.nasa.gov/planetary/apod?", {
+    params: {
+        api_key: "ngHRTZ4OcS3inyyY02Q1Gl6fbRpQ9OnBRJeEqhBJ",
+        date: "2010-01-01"
+    },
+});
 
-function getPlanetImg(){
-    planet = 'saturn'
+const getImageOfTheDay = () => {
+    apiPicOfTheDay
+        .then((response) => {
+            imageOfTheDay.style["background-image"] = `url("${response.data.url}")`
+            // imageOfTheDay.insertAdjacentHTML(
+            //     "beforeend",
+            //     `<img src=${response.data.hdurl}>`
+            // );
+            console.log(response)
+            // pictureName.insertAdjacentHTML("beforeend", `${response.data.title}`);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
+
+getImageOfTheDay();
+
+function getPlanetImg(planet){
+    // planet = 'saturn'
     topResults = {}
     fetch(`https://images-api.nasa.gov/search?q=${planet}&media_type=image`)
     .then(res => res.json())
@@ -54,17 +80,22 @@ function getPlanetInfo(event){
         planetUl.innerHTML = `<li>Name: ${planetResult["englishName"]}</li><li> Radius: ${planetResult["meanRadius"]} km</li><li>Orbit Radius: ${planetResult["semimajorAxis"]} km</li><li> Gravity: ${planetResult["gravity"]} m/s^2</li>`
     })
 
+    planetImages = getPlanetImg(planet);                //get the images and save in to object
+
+    //planetImages[i]["desc"]
+
+    //planetImages[i]["thumb_img"]
+
+    //have for loop go through planetImages and assign to carosel images
+    
+    //for(i=0;i<planet.length;i++)
+    //img_box = document.getElementByID("cars_img_${i}")
+    //img_box.src = planetImages[i]["thumb_img"]
 
 
 }
 
-function getImgOfDay(){
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`)
-    .then(res => res.json())
-    .then(data => {
-        return data["url"]
-    })
-}
 
-sat_btn.addEventListener('click', getPlanetImg)
+// sat_btn.addEventListener('click', getPlanetImg)
 query_form.addEventListener('submit', getPlanetInfo)
+
