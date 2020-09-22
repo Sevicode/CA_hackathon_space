@@ -5,7 +5,7 @@
 * [Chris White](https://github.com/ChrisWhite12)
 * [Sevda Amini-uhde](https://github.com/Sevicode)
 
-During a two-day Hackathon our team developed a small application so the users can easily search for information about atroids, plants and moon. 
+During a two-day Hackathon our team developed a small application so the users can easily search for information about asteroids, planets and moons. 
 
 *Day 1:* During the first day we brain-stormed and planned for the project. Also started th primary stages of the development.
 
