@@ -13,16 +13,16 @@ During a two-day Hackathon our team developed a small application so the users c
 
 *Day 2:* The second day was all about coding and debugging. 
 
-### User Stories :
+### User Stories:
 * User can search for planet and be directed to the related information page
 * When in the information page the user can click on *moon* and get some more information about that moon 
 
-**Features**
+### Features:
 * Search function
 * Daily changes of background picture 
 * Displaying current date 
 
-**Project Management**
+### Project Management:
 
 * We used Trello to manage the project and staging the development in sections.
 * The development process from design until completion was online and we used Canvas and Discord to communicate.
