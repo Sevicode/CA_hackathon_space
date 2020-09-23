@@ -2,15 +2,49 @@ let sat_btn = document.getElementById("saturn_btn")
 let query_form = document.getElementById("query_form")
 let planet_section = document.getElementById("planet_section")
 let body_sec = document.querySelector("body")
+let today_text = document.getElementById("today")
+
+var today = new Date();
+var now_day = today.getDate();
+
+var now_month = today.getMonth()+1; 
+var now_year = today.getFullYear();
+
+if(now_day < 10) 
+{
+    if(now_day <= 2){
+        now_day = 28
+        if(now_month == 1){
+            now_month = 12
+            now_year = now_year - 1
+        }
+    }
+    now_day = '0' + (now_day - 1);
+}
+else{
+    now_day  = now_day - 1
+}
+
+
+if(now_month < 10) 
+{
+    now_month = '0' + now_month;
+} 
+
+search_day = `${now_year}-${now_month}-${now_day}`;
+// console.log(search_day);
+today_text.textContent = `picture from ${search_day}`
 
 ////Api to get the Image of the day
 const imageOfTheDay = document.querySelector(".daily-image");
 const apiPicOfTheDay = axios.get("https://api.nasa.gov/planetary/apod?", {
     params: {
         api_key: "ngHRTZ4OcS3inyyY02Q1Gl6fbRpQ9OnBRJeEqhBJ",
-        date: '2020-01-01'
+        date: search_day
     },
 });
+
+
 
 const getImageOfTheDay = () => {
     apiPicOfTheDay
