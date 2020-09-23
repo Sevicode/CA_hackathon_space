@@ -20,6 +20,7 @@ During a two-day Hackathon our team developed a small application so the users c
 **Features**
 * Search function
 * Daily changes of background picture 
+* Displaying current date 
 
 **Project Management**
 
