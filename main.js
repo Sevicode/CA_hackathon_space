@@ -12,13 +12,14 @@ var now_year = today.getFullYear();
 
 if(now_day < 10) 
 {
-    if(now_day <= 2){
+    if(now_day < 2){               //if less then 2 go to the previous month
         now_day = 28
         if(now_month == 1){
             now_month = 12
             now_year = now_year - 1
         }
     }
+
     now_day = '0' + (now_day - 1);
 }
 else{
@@ -31,11 +32,11 @@ if(now_month < 10)
     now_month = '0' + now_month;
 } 
 
-search_day = `${now_year}-${now_month}-${now_day}`;
+search_day = `${now_year}-${now_month}-${now_day}`;             //set the search date to todays date -1
 // console.log(search_day);
-today_text.textContent = `picture from ${search_day}`
+today_text.textContent = `picture from ${search_day}`           //set caption
 
-////Api to get the Image of the day
+//Api to get the Image of the day
 const imageOfTheDay = document.querySelector(".daily-image");
 const apiPicOfTheDay = axios.get("https://api.nasa.gov/planetary/apod?", {
     params: {
@@ -49,7 +50,7 @@ const apiPicOfTheDay = axios.get("https://api.nasa.gov/planetary/apod?", {
 const getImageOfTheDay = () => {
     apiPicOfTheDay
         .then((response) => {
-            imageOfTheDay.style["background-image"] = `url("${response.data.url}")`
+            imageOfTheDay.style["background-image"] = `url("${response.data.url}")`             //set the background image
         })
         .catch((err) => {
             console.log(err);
@@ -58,13 +59,16 @@ const getImageOfTheDay = () => {
 
 getImageOfTheDay();
 
+
+// get planet images from NASA image library API
 function getPlanetImg(planet){
     // planet = 'saturn'
     topResults = {}
-    fetch(`https://images-api.nasa.gov/search?q=${planet}&media_type=image`)
+    fetch(`https://images-api.nasa.gov/search?q=${planet}&media_type=image&center=JPL`)
     .then(res => res.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
+
         for (let i = 0; i < 10; i++) {
             topResults[i] = {}
             topResults[i]["desc"] = (data["collection"]["items"][i]["data"][0]["description"])
@@ -72,8 +76,8 @@ function getPlanetImg(planet){
             topResults[i]["href"] = data["collection"]["items"][i]["href"]
             // topResults[i]["desc"] = data["collection"]["items"][i]["data"][0]["description"]
         }
-        console.log(`top results`)
-        console.log(topResults)
+        // console.log(`top results`)
+        // console.log(topResults)
 
         main_planet_img.src = topResults[0]["thumb_img"]
 
@@ -89,18 +93,6 @@ function getPlanetImg(planet){
     .catch(err => alert(err))
 }
 
-// function getWikiInfo(){
-
-//     planet = 'saturn'
-//     wiki_info = {}
-//     fetch(`https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${planet}&format=json&origin=*`)
-//     .then(res => res.json())
-//     .then(data => {
-//         first_result = data["query"]["search"][0]
-//         console.log(first_result)
-//     })
-// }
-
 function getPlanetInfo(event){
     event.preventDefault()
 
@@ -111,9 +103,9 @@ function getPlanetInfo(event){
     }
     else{
         info_url = event.target.value
-        console.log(info_url)
+        // console.log(info_url)
     }
-    console.log(event)
+    // console.log(event)
     
     if(planet_section.hasChildNodes()){
         planet_section.removeChild(planet_section.firstChild)
@@ -142,7 +134,7 @@ function getPlanetInfo(event){
         photo_div.id = "photo_section"
         body_sec.appendChild(photo_div)
         photo_section = photo_div
-        console.log(photo_section)
+        // console.log(photo_section)
     }
     while (photo_section.hasChildNodes()) {  
         photo_section.removeChild(photo_section.firstChild);
@@ -190,7 +182,7 @@ function getPlanetInfo(event){
     fetch(info_url)           //getting the planet information from API
     .then(res => res.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
         if(event.type == 'submit'){
             planetResult = data["bodies"][0]
         }
@@ -198,7 +190,7 @@ function getPlanetInfo(event){
             planetResult = data
             planet = data["englishName"]
         }
-        console.log(planetResult)
+        // console.log(planetResult)
         planetUl.innerHTML = `<li>Name: ${planetResult["englishName"]}</li><li> Radius: ${planetResult["meanRadius"]} km</li>
         <li>Orbit Radius: ${planetResult["semimajorAxis"]} km</li><li> Gravity: ${planetResult["gravity"]} m/s^2</li>`
 
@@ -228,7 +220,7 @@ function getPlanetInfo(event){
                 moon_item = document.createElement("option")
                 moon_sel.appendChild(moon_item)
 
-                console.log(element)
+                // console.log(element)
                 moon_item.value = element["rel"]
                 moon_item.label = element["moon"]
 
@@ -239,7 +231,7 @@ function getPlanetInfo(event){
                 //     moon_item.textContent = data["englishName"]
                 // })
 
-                console.log(element)
+                // console.log(element)
                 
             }
         }
