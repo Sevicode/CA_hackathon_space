@@ -69,7 +69,7 @@ li{
   border-radius: 10px;
 }
 
-.photo_section{
+#photo_section{
   height: 400px;
   width: 90vw;
   border: 2px green solid;
