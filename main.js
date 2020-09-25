@@ -65,6 +65,7 @@ function getPlanetImg(planet){
     // planet = 'saturn'
     topResults = {}
     fetch(`https://images-api.nasa.gov/search?q=${planet}&media_type=image&center=JPL`)
+    
     .then(res => res.json())
     .then(data => {
         // console.log(data)
@@ -75,9 +76,10 @@ function getPlanetImg(planet){
             topResults[i]["thumb_img"] = data["collection"]["items"][i]["links"][0]["href"]
             topResults[i]["href"] = data["collection"]["items"][i]["href"]
             // topResults[i]["desc"] = data["collection"]["items"][i]["data"][0]["description"]
-          }
-          console.log(topResults);
-          for (i = 1; i < 5; i++) {
+        }
+
+        console.log(topResults);
+        for (i = 1; i < 5; i++) {
             planetImages_desc = topResults[i]["desc"];
             // console.log(planetImages_desc)
             img_box = document.getElementById(`cars_img_${i}`);
@@ -85,23 +87,20 @@ function getPlanetImg(planet){
             // console.log(i)
             console.log(img_box)
             img_box.src = topResults[i]["thumb_img"]
-          }
         }
-        // console.log(`top results`)
-        // console.log(topResults)
-
-        main_planet_img.src = topResults[0]["thumb_img"]
-
-        for (let i = 1; i < 6; i++) {
-            caro_img = document.getElementById(`caro_img${i}`)
-            caro_img.src = topResults[i]["thumb_img"]
-            caro_img.style["width"] = '100px'
-            caro_img.style["height"] = '100px'
-        }
-
-        }
-    )
+    })
     .catch(err => alert(err))
+    // console.log(`top results`)
+    // console.log(topResults)
+
+    main_planet_img.src = topResults[0]["thumb_img"]
+
+    for (let i = 1; i < 6; i++) {
+        caro_img = document.getElementById(`caro_img${i}`)
+        caro_img.src = topResults[i]["thumb_img"]
+        caro_img.style["width"] = '100px'
+        caro_img.style["height"] = '100px'
+    }
 }
 
 function getPlanetInfo(event){
