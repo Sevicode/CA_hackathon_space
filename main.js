@@ -75,6 +75,17 @@ function getPlanetImg(planet){
             topResults[i]["thumb_img"] = data["collection"]["items"][i]["links"][0]["href"]
             topResults[i]["href"] = data["collection"]["items"][i]["href"]
             // topResults[i]["desc"] = data["collection"]["items"][i]["data"][0]["description"]
+          }
+          console.log(topResults);
+          for (i = 1; i < 5; i++) {
+            planetImages_desc = topResults[i]["desc"];
+            // console.log(planetImages_desc)
+            img_box = document.getElementById(`cars_img_${i}`);
+            // console.log("img_box")
+            // console.log(i)
+            console.log(img_box)
+            img_box.src = topResults[i]["thumb_img"]
+          }
         }
         // console.log(`top results`)
         // console.log(topResults)
