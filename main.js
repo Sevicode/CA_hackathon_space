@@ -79,28 +79,28 @@ function getPlanetImg(planet){
         }
 
         console.log(topResults);
-        for (i = 1; i < 5; i++) {
-            planetImages_desc = topResults[i]["desc"];
-            // console.log(planetImages_desc)
-            img_box = document.getElementById(`cars_img_${i}`);
-            // console.log("img_box")
-            // console.log(i)
-            console.log(img_box)
-            img_box.src = topResults[i]["thumb_img"]
+        // for (i = 1; i < 5; i++) {
+        //     planetImages_desc = topResults[i]["desc"];
+        //     // console.log(planetImages_desc)
+        //     img_box = document.getElementById(`caro_img_${i}`);
+        //     // console.log("img_box")
+        //     // console.log(i)
+        //     console.log(img_box)
+        //     img_box.src = topResults[i]["thumb_img"]
+        // }
+
+        console.log(topResults[0]["thumb_img"])
+
+        main_planet_img.src = topResults[0]["thumb_img"]
+
+        for (let i = 1; i < 6; i++) {
+            caro_img = document.getElementById(`caro_img${i}`)
+            caro_img.src = topResults[i]["thumb_img"]
+            caro_img.style["width"] = '100px'
+            caro_img.style["height"] = '100px'
         }
     })
     .catch(err => alert(err))
-    // console.log(`top results`)
-    // console.log(topResults)
-
-    main_planet_img.src = topResults[0]["thumb_img"]
-
-    for (let i = 1; i < 6; i++) {
-        caro_img = document.getElementById(`caro_img${i}`)
-        caro_img.src = topResults[i]["thumb_img"]
-        caro_img.style["width"] = '100px'
-        caro_img.style["height"] = '100px'
-    }
 }
 
 function getPlanetInfo(event){
